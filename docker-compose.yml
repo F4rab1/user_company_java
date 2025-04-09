@@ -1,0 +1,50 @@
+services:
+  userservice:
+    build: ./userservice
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-user:5432/userdb
+      - SPRING_DATASOURCE_USERNAME=fara
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - postgres-user
+
+  companyservice:
+    build: ./companyservice
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-company:5432/companydb
+      - SPRING_DATASOURCE_USERNAME=fara
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - postgres-company
+
+  postgres-user:
+    image: postgres:17
+    container_name: postgres-user
+    environment:
+      - POSTGRES_USER=fara
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=userdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata-user:/var/lib/postgresql/data
+
+  postgres-company:
+    image: postgres:17
+    container_name: postgres-company
+    environment:
+      - POSTGRES_USER=fara
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=companydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata-company:/var/lib/postgresql/data
+
+volumes:
+  pgdata-user:
+  pgdata-company:
