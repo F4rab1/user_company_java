@@ -5,16 +5,16 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Long companyId;
+    private CompanyDto company;
 
     public UserDto() {}
 
-    public UserDto(Long id, String firstName, String lastName, String phoneNumber, Long companyId) {
+    public UserDto(Long id, String firstName, String lastName, String phoneNumber, CompanyDto company) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.companyId = companyId;
+        this.company = company;
     }
 
     public Long getId() {
@@ -41,10 +41,10 @@ public class UserDto {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public Long getCompanyId() {
-        return companyId;
+    public CompanyDto getCompany() {
+        return company;
     }
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
+    public void setCompany(CompanyDto company) {
+        this.company = company;
     }
 }

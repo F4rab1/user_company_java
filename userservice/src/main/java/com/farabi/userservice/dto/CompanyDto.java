@@ -6,15 +6,13 @@ public class CompanyDto {
     private Long id;
     private String name;
     private Double budget;
-    private List<UserDto> users;
 
     public CompanyDto() {}
 
-    public CompanyDto(Long id, String name, Double budget, List<UserDto> users) {
+    public CompanyDto(Long id, String name, Double budget) {
         this.id = id;
         this.name = name;
         this.budget = budget;
-        this.users = users;
     }
 
     public Long getId() {
@@ -39,13 +37,5 @@ public class CompanyDto {
 
     public void setBudget(Double budget) {
         this.budget = budget;
-    }
-
-    public List<UserDto> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<UserDto> users) {
-        this.users = users;
     }
 }

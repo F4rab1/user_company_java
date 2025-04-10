@@ -1,5 +1,6 @@
 package com.farabi.userservice.service;
 
+import com.farabi.userservice.client.CompanyClient;
 import com.farabi.userservice.dto.CompanyDto;
 import com.farabi.userservice.dto.UserDto;
 import com.farabi.userservice.model.User;
@@ -13,9 +14,11 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final CompanyClient companyClient;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, CompanyClient companyClient) {
         this.userRepository = userRepository;
+        this.companyClient = companyClient;
     }
 
     public UserDto createUser(User user) {
@@ -53,12 +56,18 @@ public class UserService {
     }
 
     private UserDto convertToDto(User user) {
+        CompanyDto company = null;
+
+        if (user.getCompanyId() != null) {
+            company = companyClient.getCompanyById(user.getCompanyId());
+        }
+
         return new UserDto(
                 user.getId(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getPhoneNumber(),
-                user.getCompanyId() // directly mapping companyId
+                company
         );
     }
 }
