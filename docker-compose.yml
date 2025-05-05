@@ -1,4 +1,12 @@
 services:
+  discovery-service:
+    build: ./discovery-service
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_CLOUD_COMPATIBILITY_VERIFIER_ENABLED=false
+
   userservice:
     build: ./userservice
     ports:
@@ -7,8 +15,11 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-user:5432/userdb
       - SPRING_DATASOURCE_USERNAME=fara
       - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_APPLICATION_NAME=userservice
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka/
     depends_on:
       - postgres-user
+      - discovery-service
 
   companyservice:
     build: ./companyservice
@@ -18,8 +29,11 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-company:5432/companydb
       - SPRING_DATASOURCE_USERNAME=fara
       - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_APPLICATION_NAME=companyservice
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka/
     depends_on:
       - postgres-company
+      - discovery-service
 
   api-gateway:
     build: ./api-gateway
@@ -28,6 +42,7 @@ services:
     environment:
       - USER_SERVICE_URI=http://userservice:8080
       - COMPANY_SERVICE_URI=http://companyservice:8081
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka/
     depends_on:
       - userservice
       - companyservice
