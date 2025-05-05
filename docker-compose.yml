@@ -21,6 +21,17 @@ services:
     depends_on:
       - postgres-company
 
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "9000:9000"
+    environment:
+      - USER_SERVICE_URI=http://userservice:8080
+      - COMPANY_SERVICE_URI=http://companyservice:8081
+    depends_on:
+      - userservice
+      - companyservice
+
   postgres-user:
     image: postgres:17
     container_name: postgres-user
