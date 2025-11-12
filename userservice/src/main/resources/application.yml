@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: userservice
   datasource:
     url: jdbc:postgresql://localhost:5433/userdb
     username: fara
@@ -11,6 +13,13 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
+
 company:
   service:
     url: http://companyservice:8081
+
+
