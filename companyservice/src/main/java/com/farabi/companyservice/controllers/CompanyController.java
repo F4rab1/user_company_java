@@ -3,6 +3,7 @@ package com.farabi.companyservice.controllers;
 import com.farabi.companyservice.dtos.CompanyDto;
 import com.farabi.companyservice.entities.Company;
 import com.farabi.companyservice.services.CompanyService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/companies")
+@Tag(name = "companies")
 public class CompanyController {
 
     private final CompanyService companyService;
