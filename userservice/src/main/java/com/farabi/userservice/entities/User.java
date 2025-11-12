@@ -1,4 +1,4 @@
-package com.farabi.userservice.model;
+package com.farabi.userservice.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

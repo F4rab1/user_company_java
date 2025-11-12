@@ -1,6 +1,6 @@
-package com.farabi.companyservice.repository;
+package com.farabi.companyservice.repositories;
 
-import com.farabi.companyservice.model.Company;
+import com.farabi.companyservice.entities.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.farabi.userservice.dto;
+package com.farabi.userservice.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

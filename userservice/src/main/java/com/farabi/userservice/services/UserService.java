@@ -1,10 +1,10 @@
-package com.farabi.userservice.service;
+package com.farabi.userservice.services;
 
 import com.farabi.userservice.client.CompanyClient;
-import com.farabi.userservice.dto.CompanyDto;
-import com.farabi.userservice.dto.UserDto;
-import com.farabi.userservice.model.User;
-import com.farabi.userservice.repository.UserRepository;
+import com.farabi.userservice.dtos.CompanyDto;
+import com.farabi.userservice.dtos.UserDto;
+import com.farabi.userservice.entities.User;
+import com.farabi.userservice.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

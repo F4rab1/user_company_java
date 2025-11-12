@@ -1,8 +1,8 @@
-package com.farabi.userservice.controller;
+package com.farabi.userservice.controllers;
 
-import com.farabi.userservice.dto.UserDto;
-import com.farabi.userservice.model.User;
-import com.farabi.userservice.service.UserService;
+import com.farabi.userservice.dtos.UserDto;
+import com.farabi.userservice.entities.User;
+import com.farabi.userservice.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
