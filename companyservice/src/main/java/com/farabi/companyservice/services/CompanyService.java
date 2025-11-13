@@ -16,7 +16,8 @@ public class CompanyService {
 
     private final CompanyRepository companyRepository;
 
-    public CompanyDto createCompany(Company company) {
+    public CompanyDto createCompany(CompanyDto companyDto) {
+        Company company = convertToEntity(companyDto);
         Company createdCompany = companyRepository.save(company);
         return convertToDto(createdCompany);
     }
@@ -51,6 +52,13 @@ public class CompanyService {
 
     public void deleteCompanyById(Long id) {
         companyRepository.deleteById(id);
+    }
+
+    private Company convertToEntity(CompanyDto companyDto) {
+        Company company = new Company();
+        company.setName(companyDto.getName());
+        company.setBudget(companyDto.getBudget());
+        return company;
     }
 
     private CompanyDto convertToDto(Company company) {
