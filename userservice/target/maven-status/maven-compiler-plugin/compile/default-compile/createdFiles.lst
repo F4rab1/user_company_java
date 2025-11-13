@@ -1,4 +1,4 @@
-com/farabi/userservice/controller/UserController.class
+com/farabi/userservice/dtos/CompanyDto.class
+com/farabi/userservice/controllers/UserController.class
 com/farabi/userservice/UserserviceApplication.class
 com/farabi/userservice/client/CompanyClient.class
-com/farabi/userservice/dto/CompanyDto.class

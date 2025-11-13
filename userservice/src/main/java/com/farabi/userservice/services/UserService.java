@@ -21,9 +21,10 @@ public class UserService {
         this.companyClient = companyClient;
     }
 
-    public UserDto createUser(User user) {
-        User saved = userRepository.save(user);
-        return convertToDto(saved);
+    public UserDto createUser(UserDto userDto) {
+        User user = convertToEntity(userDto);
+        User savedUser = userRepository.save(user);
+        return convertToDto(savedUser);
     }
 
     public UserDto getUser(Long id) {
@@ -53,6 +54,14 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    private User convertToEntity(UserDto userDto) {
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        return user;
     }
 
     private UserDto convertToDto(User user) {

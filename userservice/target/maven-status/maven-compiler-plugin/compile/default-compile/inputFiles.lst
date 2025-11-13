@@ -1,8 +1,8 @@
 /Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/UserserviceApplication.java
 /Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/client/CompanyClient.java
-/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/controller/UserController.java
-/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/dto/CompanyDto.java
-/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/dto/UserDto.java
-/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/model/User.java
-/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/repository/UserRepository.java
-/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/service/UserService.java
+/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/controllers/UserController.java
+/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/dtos/CompanyDto.java
+/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/dtos/UserDto.java
+/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/entities/User.java
+/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/repositories/UserRepository.java
+/Users/farabiisa/Desktop/java/project/userservice/src/main/java/com/farabi/userservice/services/UserService.java
