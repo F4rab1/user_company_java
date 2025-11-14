@@ -1,6 +1,7 @@
 package com.farabi.userservice.controllers;
 
 import com.farabi.userservice.dtos.UserDto;
+import com.farabi.userservice.dtos.UserRequestDto;
 import com.farabi.userservice.entities.User;
 import com.farabi.userservice.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,8 +27,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
-        return ResponseEntity.ok(userService.createUser(userDto));
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserRequestDto userRequestDto) {
+        return ResponseEntity.ok(userService.createUser(userRequestDto));
     }
 
     @GetMapping("/{id}")
@@ -41,8 +42,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody User user) {
-        return ResponseEntity.ok(userService.updateUser(id, user));
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequestDto userRequestDto) {
+        return ResponseEntity.ok(userService.updateUser(id, userRequestDto));
     }
 
     @DeleteMapping("/{id}")
