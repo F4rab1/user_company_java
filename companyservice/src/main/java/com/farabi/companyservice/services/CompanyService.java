@@ -2,9 +2,9 @@ package com.farabi.companyservice.services;
 
 import com.farabi.companyservice.dtos.CompanyDto;
 import com.farabi.companyservice.entities.Company;
+import com.farabi.companyservice.mappers.CompanyMapper;
 import com.farabi.companyservice.repositories.CompanyRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class CompanyService {
-
     private final CompanyRepository companyRepository;
+    private final CompanyMapper companyMapper;
 
     public CompanyDto createCompany(CompanyDto companyDto) {
-        Company company = convertToEntity(companyDto);
+        Company company = companyMapper.toCompany(companyDto);
         Company createdCompany = companyRepository.save(company);
-        return convertToDto(createdCompany);
+        return companyMapper.toCompanyDto(createdCompany);
     }
 
     public CompanyDto getCompanyById(Long id) {
@@ -29,12 +29,13 @@ public class CompanyService {
             return null;
         }
 
-        return convertToDto(company);
+        return companyMapper.toCompanyDto(company);
     }
 
     public List<CompanyDto> findAll() {
+        System.out.println("company Mapper worked");
         return companyRepository.findAll().stream()
-                .map(this::convertToDto)
+                .map(companyMapper::toCompanyDto)
                 .collect(Collectors.toList());
     }
 
@@ -47,25 +48,10 @@ public class CompanyService {
         company.setName(updatedCompany.getName());
         company.setBudget(updatedCompany.getBudget());
         Company savedCompany = companyRepository.save(company);
-        return convertToDto(savedCompany);
+        return companyMapper.toCompanyDto(savedCompany);
     }
 
     public void deleteCompanyById(Long id) {
         companyRepository.deleteById(id);
-    }
-
-    private Company convertToEntity(CompanyDto companyDto) {
-        Company company = new Company();
-        company.setName(companyDto.getName());
-        company.setBudget(companyDto.getBudget());
-        return company;
-    }
-
-    private CompanyDto convertToDto(Company company) {
-        return new CompanyDto(
-                company.getId(),
-                company.getName(),
-                company.getBudget()
-        );
     }
 }
